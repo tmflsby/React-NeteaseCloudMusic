@@ -1,16 +1,55 @@
-import React, { memo, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-const Home = memo(() => {
+const ADD_TYPE = "ADD_TYPE"
+const actionCreator = (params) => ({
+  type: ADD_TYPE,
+  payload: {
+    ...params
+  }
+})
+const InitialState = {
+  counter: 0
+}
+export const counterReducer = (state = InitialState, { type, payload }) => {
+  switch (type) {
+    case ADD_TYPE:
+      return {
+        ...state,
+        counter: state.counter + payload.num
+      }
+    default:
+      return state
+  }
+}
+
+const Home = ({ history, location, match, staticContext, counter, add }) => {
   useEffect(() => {
-    axios(`/api/getList`).then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
+    return () => {}
   }, [])
 
-  return <div>home</div>
-})
+  const handleClick = (e) => {
+    add()
+  }
 
-export default Home
+  return (<div>
+    <p>这是组件</p>
+    <h3>{counter}</h3>
+    <button onClick={(e) => { handleClick(e) }}>点击爱</button>
+  </div>)
+}
+
+export default connect(
+  (state, { history, location, match, staticContext }) => ({
+    ...state
+  }),
+  (dispatch, {history, location, match, staticContext}) => ({
+    add() {
+      dispatch(
+        actionCreator({
+          num: 10
+        })
+      )
+    }
+  })
+)(Home)
