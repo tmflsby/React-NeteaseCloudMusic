@@ -31,4 +31,4 @@ export const StyledLeft = styled.div`
   }
 `
 
-export const styledRight = styled.div``
+export const StyledRight = styled.div``

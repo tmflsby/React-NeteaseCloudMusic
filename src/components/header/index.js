@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { WrapperContainer, StyledLeft, styledRight } from "./styled";
+import { WrapperContainer, StyledLeft, StyledRight } from "./styled";
 import { NavLink } from "react-router-dom";
 import { headerNavConfig } from "../../common/config";
 import classnames from "classnames";
@@ -25,7 +25,7 @@ const HeaderComp = memo(() => {
             }
           </ul>
         </StyledLeft>
-        <styledRight/>
+        <StyledRight/>
       </div>
     </WrapperContainer>
   )
