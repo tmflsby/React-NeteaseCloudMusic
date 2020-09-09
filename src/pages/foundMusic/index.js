@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import SubNavComp from "../../components/subnav";
+import SubNavComp from "@/components/subnav";
 import BannerComp from "./childrenPages/recommend/components/bannerComp"
 
 const FoundMusic = memo(() => {
