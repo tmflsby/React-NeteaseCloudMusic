@@ -1,12 +1,11 @@
 import axios from "axios";
-import * as commonConfig from "../common/config";
 
 const request = (options) => {
   return new Promise((resolve, reject) => {
     // 1. 实例配置
     const insOptions = {
-      baseURL: commonConfig.BASE_URL,
-      timeout: commonConfig.TIME_OUT
+      baseURL: process.env.REACT_APP_BASE_URL,
+      timeout: Number(process.env.REACT_APP_TIME_OUT)
     }
 
     // 2. 创建 axios 实例
