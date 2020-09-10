@@ -1,10 +1,11 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import RouterPage from "./router";
-import "./styles/base.css";
+import "./styles/base.scss";
 
 const YYHeaderComp = lazy(() => import("./components/header"))
 const YYFooterComp = lazy(() => import("./components/footer"))
+const YYPlayControlBarPage = lazy(() => import("./pages/player/playControlBar"))
 
 const App = () => (
   <Router>
@@ -14,6 +15,8 @@ const App = () => (
       <RouterPage/>
 
       <YYFooterComp/>
+
+      <YYPlayControlBarPage/>
     </Suspense>
   </Router>
 )

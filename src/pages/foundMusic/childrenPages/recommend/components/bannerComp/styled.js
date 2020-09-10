@@ -15,7 +15,7 @@ export const WrapperContainer = styled.div`
 
 export const LeftContainer = styled.div`
   height: 285px;
-  width: 685px;
+  width: 730px;
   .banner-item {
     overflow: hidden;
     height: 285px;
