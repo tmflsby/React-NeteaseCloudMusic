@@ -1,5 +1,3 @@
-import request from "../services/request";
+import { get } from "@/services/request";
 
-export const fetchBannerListApi = () => request({
-  url: "/banner"
-})
+export const fetchBannerListApi = () => get("/banner")

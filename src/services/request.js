@@ -1,49 +1,60 @@
 import axios from "axios";
 
-const request = (options) => {
-  return new Promise((resolve, reject) => {
-    // 1. 实例配置
-    const insOptions = {
-      baseURL: process.env.REACT_APP_BASE_URL,
-      timeout: Number(process.env.REACT_APP_TIME_OUT)
-    }
+const instance = axios.create({
+  baseURL: process.env.REACT_APP_BASE_URL,
+  timeout: Number(process.env.REACT_APP_TIME_OUT)
+})
 
-    // 2. 创建 axios 实例
-    const axiosInstance = axios.create(insOptions)
+// Add a request interceptor 全局请求拦截，发送请求之前执行
+instance.interceptors.request.use(
+  config => {
+    // Do something before request is sent
+    // 设置请求的 token 等等
+    // config.headers["authorization"] = "Bearer " + getToken();
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  }
+)
 
-    // 3. 请求拦截
-    axiosInstance.interceptors.request.use(
-      config => {
-        // 3-1 页面添加loading组件
-        // 3-2 token 鉴权
-        // ……
-        return config
-      },
-      error => {
-        return error
-      }
-    )
+// Add a response interceptor 请求返回之后执行
+instance.interceptors.response.use(
+  response => {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return response.data
+  },
+  error => {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error)
+  }
+)
 
-    // 4. 响应拦截
-    axiosInstance.interceptors.response.use(
-      res => {
-        return res.data
-      },
-      error => {
-        // 错误码处理
-        if (error && error.response) {}
+/**
+ * get 请求
+ * @param { * } url 请求地址
+ * @param { * } params
+ * */
+export const get = (url, params) => instance.get(url, { params })
 
-        return error;
-      }
-    )
+/**
+ * post 请求
+ * @param { * } url 请求地址
+ * @param { * } data
+ * */
+export const post = (url, data) => instance.post(url, data)
 
-    // 5. 网络请求
-    axiosInstance(options).then(res => {
-      resolve(res)
-    }).catch(error => {
-      reject(error)
-    })
-  })
-}
+/**
+ * put 请求
+ * @param { * } url 请求地址
+ * @param { * } data
+ * */
+export const put = (url, data) => instance.put(url, data)
 
-export default request
+/**
+ * delete 请求
+ * @param { * } url
+ * */
+export const del = url => instance.delete(url)
