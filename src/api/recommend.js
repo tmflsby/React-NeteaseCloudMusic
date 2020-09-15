@@ -1,3 +1,3 @@
-import { get } from "@/services/request";
+import { get } from "@/utils/request";
 
 export const fetchBannerListApi = () => get("/banner")

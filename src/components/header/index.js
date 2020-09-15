@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { WrapperContainer, StyledLeft, StyledRight } from "./styled";
 import { NavLink } from "react-router-dom";
-import { headerNavConfig } from "../../common/config";
+import { headerNavRoutes } from "@/router/headerNav";
 import classnames from "classnames";
 
 const HeaderComp = memo(() => {
@@ -14,12 +14,20 @@ const HeaderComp = memo(() => {
           </a>
           <ul>
             {
-              headerNavConfig.map(item => (
-                <li key={item.title} className={classnames("setected_nav")}>
-                  <NavLink to={item.path}>
-                    {item.title}
-                    <i className="sprite_topbar icon"/>
-                  </NavLink>
+              headerNavRoutes.map(item => (
+                <li key={item.navTitle} className={classnames("setected_nav")}>
+                  {
+                    item.path ? (
+                      <NavLink to={item.path}>
+                        {item.navTitle}
+                        <i className="sprite_topbar icon"/>
+                      </NavLink>
+                    ) : (
+                      <a href={item.externalLink} target="_blank">
+                        {item.navTitle}{" "}
+                      </a>
+                    )
+                  }
                 </li>
               ))
             }

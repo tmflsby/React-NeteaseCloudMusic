@@ -1,4 +1,4 @@
-import request from "../services/request";
+import request from "../utils/request";
 
 export const fetchList = (query) => request({
   url: "api/todos",

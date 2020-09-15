@@ -1,20 +1,9 @@
-import React, { memo } from "react";
+import { memo } from "react";
+import { renderRoutes } from "react-router-config";
 import routesConfig from "./routesConfig";
-import { Route, Switch } from "react-router-dom";
 
-const RouterPage = memo(() => {
-  return (
-    <Switch>
-      {
-        routesConfig.map(item => (
-          <Route path={item.path} exact={item.exact}
-                 render={item.render} key={item.path}
-                 component={item.component}
-          />
-        ))
-      }
-    </Switch>
-  )
+const Router = memo(() => {
+  return renderRoutes(routesConfig)
 })
 
-export default RouterPage
+export default Router

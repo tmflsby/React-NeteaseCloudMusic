@@ -1,19 +1,44 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useRef, useEffect } from "react";
 import { Slider } from "antd";
+import { getAudioSrc } from "@/utils/toolsHelper";
 import "./index.scss";
 
 const PlayControlBar = memo(() => {
   const [defaultValue] = useState(80)
+  // const [setNowIsPlay] = useState(false)
+  const audioRef = useRef()
+
+  useEffect(() => {
+    audioRef.current.src = getAudioSrc("442869203")
+
+    // 开始播放
+    // setNowIsPlay(false)
+
+    audioRef.current.play().then(res => {
+      console.log(res)
+      // setNowIsPlay(true)
+    }).catch(error => {
+      console.log(error)
+      // setNowIsPlay(false)
+    })
+
+    return () => {}
+  }, [])
+
+  const handlePlayClick = (e) => {
+    console.log(e)
+  }
 
   return (
     <div className="play_container">
+      <audio src="" ref={audioRef}/>
       <section className="lock">
         <button className="btn"/>
       </section>
       <section className="wrap_980_center content">
         <section className="btns">
           <button className="pre btn"/>
-          <button className="play btn"/>
+          <button className="play btn" onClick={(e) => handlePlayClick(e)}/>
           <button className="next btn"/>
         </section>
         <section className="space"/>
