@@ -14,13 +14,13 @@ const PlayControlBar = memo(() => {
     // 开始播放
     // setNowIsPlay(false)
 
-    audioRef.current.play().then(res => {
-      console.log(res)
-      // setNowIsPlay(true)
-    }).catch(error => {
-      console.log(error)
-      // setNowIsPlay(false)
-    })
+    // audioRef.current.play().then(res => {
+    //   console.log(res)
+    //   // setNowIsPlay(true)
+    // }).catch(error => {
+    //   console.log(error)
+    //   // setNowIsPlay(false)
+    // })
 
     return () => {}
   }, [])

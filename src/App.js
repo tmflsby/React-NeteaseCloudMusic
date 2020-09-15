@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router } from "react-router-dom";
 import YYMainComp from "./router";
-import "./styles/base.scss";
+import "./styles/global.scss";
 
 const YYHeaderComp = lazy(() => import("./components/header"))
 const YYFooterComp = lazy(() => import("./components/footer"))

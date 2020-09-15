@@ -23,7 +23,7 @@ const HeaderComp = memo(() => {
                         <i className="sprite_topbar icon"/>
                       </NavLink>
                     ) : (
-                      <a href={item.externalLink} target="_blank">
+                      <a href={item.externalLink} target="_blank"  rel="noopener noreferrer">
                         {item.navTitle}{" "}
                       </a>
                     )
