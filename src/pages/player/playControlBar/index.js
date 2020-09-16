@@ -4,23 +4,23 @@ import { getAudioSrc } from "@/utils/toolsHelper";
 import "./index.scss";
 
 const PlayControlBar = memo(() => {
-  const [defaultValue] = useState(80)
-  // const [setNowIsPlay] = useState(false)
+  const [defaultValue, setDefaultValue] = useState(80)
+  const [nowIsPlay, setNowIsPlay] = useState(false)
   const audioRef = useRef()
 
   useEffect(() => {
     audioRef.current.src = getAudioSrc("442869203")
 
     // 开始播放
-    // setNowIsPlay(false)
+    setNowIsPlay(false)
 
-    // audioRef.current.play().then(res => {
-    //   console.log(res)
-    //   // setNowIsPlay(true)
-    // }).catch(error => {
-    //   console.log(error)
-    //   // setNowIsPlay(false)
-    // })
+    audioRef.current.play().then(res => {
+      console.log(res)
+      setNowIsPlay(true)
+    }).catch(error => {
+      console.log(error)
+      setNowIsPlay(false)
+    })
 
     return () => {}
   }, [])
