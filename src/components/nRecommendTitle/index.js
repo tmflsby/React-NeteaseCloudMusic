@@ -1,33 +1,24 @@
-import React, { memo } from "react";
-import "./index.scss";
+import React, { memo, Fragment } from "react";
+import PropTypes from "prop-types";
+import { WrapCon } from "./styled";
 
-const NRecommendTitle = memo(() => {
+const NRecommendTitle = memo(({title, tabs, tag}) => {
   return (
-    <div className="v-hd2">
+    <WrapCon className="v-hd2" tag={tag}>
       <a href="/discover/playlist/" className="tit f-ff2 f-tdn">
-        热门推荐
+        {title}
       </a>
       <section className="tab">
-        <a href="/#" className="s-fc3">
-          华语
-        </a>
-        <span className="line">|</span>
-        <a href="/#" className="s-fc3">
-          流行
-        </a>
-        <span className="line">|</span>
-        <a href="/#" className="s-fc3">
-          摇滚
-        </a>
-        <span className="line">|</span>
-        <a href="/#" className="s-fc3">
-          民谣
-        </a>
-        <span className="line">|</span>
-        <a href="/#" className="s-fc3">
-          电子
-        </a>
-        <span className="line">|</span>
+        {
+          tabs && tabs.map(item =>
+            <Fragment key={item.name}>
+              <a href="/#" className="s-fc3">
+                {item.name}
+              </a>
+              <span className="line">|</span>
+            </Fragment>
+          )
+        }
       </section>
       <span className="more">
         <a href="/discover/playlist/" className="s-fc3">
@@ -35,8 +26,16 @@ const NRecommendTitle = memo(() => {
         </a>
         <i className="cor">&nbsp;</i>
       </span>
-    </div>
+    </WrapCon>
   )
 })
+
+NRecommendTitle.propTypes = {
+  title: PropTypes.string.isRequired
+}
+
+NRecommendTitle.defaultProps = {
+  title: "热门推荐"
+}
 
 export default NRecommendTitle

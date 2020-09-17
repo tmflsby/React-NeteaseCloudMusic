@@ -4,8 +4,8 @@ import { getAudioSrc } from "@/utils";
 import "./index.scss";
 
 const PlayControlBar = memo(() => {
-  const [defaultValue, setDefaultValue] = useState(80)
-  const [nowIsPlay, setNowIsPlay] = useState(false)
+  const [defaultValue] = useState(80)
+  const [, setNowIsPlay] = useState(false)
   const audioRef = useRef()
 
   useEffect(() => {
