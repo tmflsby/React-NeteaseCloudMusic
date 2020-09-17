@@ -26,6 +26,11 @@ const routesConfig = [
     component: YYDiscoverPage,
     routes: [
       {
+        path: "/discover",
+        exact: true,
+        render: () => <Redirect to={"/discover/recommend"}/>
+      },
+      {
         path: "/discover/recommend",
         component: YYRecommend
       },

@@ -1,6 +1,6 @@
 import React, { memo, useState, useRef, useEffect } from "react";
 import { Slider } from "antd";
-import { getAudioSrc } from "@/utils/toolsHelper";
+import { getAudioSrc } from "@/utils";
 import "./index.scss";
 
 const PlayControlBar = memo(() => {

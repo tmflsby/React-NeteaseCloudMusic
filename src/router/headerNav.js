@@ -1,4 +1,4 @@
-export const ExternalLink = [
+const ExternalLink = [
   {
     navTitle: "商城",
     externalLink: `https://music.163.com/store/product`
@@ -9,7 +9,7 @@ export const ExternalLink = [
   }
 ]
 
-export const headerNavRoutes = [
+const headerNavRoutes = [
   {
     navTitle: "发现音乐",
     path: "/discover"
@@ -21,7 +21,12 @@ export const headerNavRoutes = [
   {
     navTitle: "朋友",
     path: "/friend"
-  },
+  }
+]
+
+export default [
+  ...headerNavRoutes,
+  ...ExternalLink,
   {
     navTitle: "下载客户端",
     path: "/download"
